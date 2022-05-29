@@ -8,12 +8,18 @@ namespace TDD_Test_of_CUX.Tests
     [Category("Main Page funcionality and navigation")]
     internal class MainPageTests : BaseTest
     {
+        public IWebElement logo => Driver.FindElement(By.XPath(@"//img[@class='logo img-responsive']"));
+        public IWebElement popularTab => Driver.FindElement(By.XPath(@"//a[@href='#homefeatured']"));
+        public IWebElement bestSellersTab => Driver.FindElement(By.XPath(@"//a[@href='#blockbestsellers']"));
+        IWebElement bestSellersTabParent => bestSellersTab.FindElement(By.XPath("./.."));
+        IWebElement popularTabParent => popularTab.FindElement(By.XPath("./.."));
+
         [Description("Test if Page can be open")]
         [Property("Author", "Maciej Darda")]
         [Test]
         public void TCID1()
         {
-            Assert.IsTrue(Driver.Title == "My Store" && Driver.FindElement(By.XPath(@"//img[@class='logo img-responsive']")).Displayed);
+            Assert.IsTrue(Driver.Title == "My Store" && logo.Displayed);
         }
 
         [Description("Test swiching between POPULAR and BEST SELLERS tabs")]
@@ -22,9 +28,10 @@ namespace TDD_Test_of_CUX.Tests
         public void TCID2()
         {
             var mp = new MainPage(Driver);
-            mp.popularAndBestSellersTab.SwitchToPopularTab();
             mp.popularAndBestSellersTab.SwitchToBestSellersTab();
-
+            Assert.IsTrue(bestSellersTabParent.GetAttribute("class") == "active");
+            mp.popularAndBestSellersTab.SwitchToPopularTab();
+            Assert.IsTrue(popularTabParent.GetAttribute("class") == "active");
         }
     }
 }

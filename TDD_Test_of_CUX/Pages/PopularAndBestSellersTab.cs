@@ -11,5 +11,18 @@ namespace TDD_Test_of_MyStore.Pages
         public PopularAndBestSellersTab(IWebDriver driver) : base(driver)
         {
         }
+
+        public IWebElement popularTab => _driver.FindElement(By.XPath(@"//a[@href='#homefeatured']"));
+        public IWebElement bestSellersTab => _driver.FindElement(By.XPath(@"//a[@href='#blockbestsellers']"));
+
+        internal void SwitchToPopularTab()
+        {
+            popularTab.Click();
+        }
+
+        internal void SwitchToBestSellersTab()
+        {
+            bestSellersTab.Click();
+        }
     }
 }
