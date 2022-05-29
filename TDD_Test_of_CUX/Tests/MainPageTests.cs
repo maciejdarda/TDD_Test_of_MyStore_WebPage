@@ -9,20 +9,20 @@ namespace TDD_Test_of_CUX.Tests
     [Category("Main Page funcionality and navigation")]
     internal class MainPageTests : BaseTest
     {
-        private static Logger _logger = LogManager.GetCurrentClassLogger();
+        private static Logger LoggerObj = LogManager.GetCurrentClassLogger();
 
-        public IWebElement logo => Driver.FindElement(By.XPath(@"//img[@class='logo img-responsive']"));
-        public IWebElement popularTab => Driver.FindElement(By.XPath(@"//a[@href='#homefeatured']"));
-        public IWebElement bestSellersTab => Driver.FindElement(By.XPath(@"//a[@href='#blockbestsellers']"));
-        IWebElement bestSellersTabParent => bestSellersTab.FindElement(By.XPath("./.."));
-        IWebElement popularTabParent => popularTab.FindElement(By.XPath("./.."));
+        public IWebElement Logo => Driver.FindElement(By.XPath(@"//img[@class='logo img-responsive']"));
+        public IWebElement PopularTab => Driver.FindElement(By.XPath(@"//a[@href='#homefeatured']"));
+        public IWebElement BestSellersTab => Driver.FindElement(By.XPath(@"//a[@href='#blockbestsellers']"));
+        IWebElement BestSellersTabParent => BestSellersTab.FindElement(By.XPath("./.."));
+        IWebElement PopularTabParent => PopularTab.FindElement(By.XPath("./.."));
 
         [Description("Test if Page can be open")]
         [Property("Author", "Maciej Darda")]
         [Test]
         public void TCID1()
         {
-            Assert.IsTrue(Driver.Title == "My Store" && logo.Displayed);
+            Assert.IsTrue(Driver.Title == "My Store" && Logo.Displayed);
         }
 
         [Description("Test switching between POPULAR and BESTSELLERS tabs")]
@@ -30,13 +30,12 @@ namespace TDD_Test_of_CUX.Tests
         [Test]
         public void TCID2()
         {
-            _logger.Debug("TCID2 - started");
-            var mp = new MainPage(Driver);
-            mp.popularAndBestSellersTab.SwitchToBestSellersTab();
-            Assert.IsTrue(bestSellersTabParent.GetAttribute("class") == "active");
-            mp.popularAndBestSellersTab.SwitchToPopularTab();
-            Assert.IsTrue(popularTabParent.GetAttribute("class") == "active");
-            _logger.Debug("TCID2 - stopped");
+            LoggerObj.Debug("TCID2 - started");
+            MainPageObj.popularAndBestSellersTab.SwitchToBestSellersTab();
+            Assert.IsTrue(BestSellersTabParent.GetAttribute("class") == "active");
+            MainPageObj.popularAndBestSellersTab.SwitchToPopularTab();
+            Assert.IsTrue(PopularTabParent.GetAttribute("class") == "active");
+            LoggerObj.Debug("TCID2 - stopped");
         }
     }
 }

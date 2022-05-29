@@ -8,14 +8,15 @@ namespace TDD_Test_of_CUX.Tests
     public class BaseTest
     {
         public IWebDriver Driver { get; set; }
+        internal MainPage MainPageObj { get; set; }
 
         [SetUp]
         public void Setup()
         {
             var factory = new WebDriverFactory();
             Driver = factory.Create(BrowserType.Chrome);
-            var mainPage = new MainPage(Driver);
-            mainPage.GoTo();
+            MainPageObj = new MainPage(Driver);
+            MainPageObj.GoTo();
         }
 
         //private IWebDriver GetChromeDriver()

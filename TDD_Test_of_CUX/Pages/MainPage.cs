@@ -17,8 +17,6 @@ namespace TDD_Test_of_CUX.Pages
 
         internal PopularAndBestSellersTab popularAndBestSellersTab { get; set; }
 
-        Logger logger = LogManager.GetCurrentClassLogger();
-
         string url = "http://automationpractice.com";
 
         internal void GoTo()
