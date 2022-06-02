@@ -24,7 +24,6 @@ namespace TDD_Test_of_CUX.Tests
         [Test]
         public void TCID1()
         {
-            Reporter.StartReporter();
             Reporter.AddTestCaseMetadataToHtmlReport(TestContext);
             Assert.IsTrue(Driver.Title == "My Store" && Logo.Displayed);
             Reporter.ReportTestOutcome("aa");

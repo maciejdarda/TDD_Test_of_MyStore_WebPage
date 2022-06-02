@@ -2,6 +2,7 @@
 using AventStack.ExtentReports.Reporter;
 using NLog;
 using NUnit.Framework;
+using NUnit.Framework.Interfaces;
 using System;
 using System.IO;
 
@@ -11,7 +12,7 @@ namespace TDD_Test_of_MyStore
     {
         private static readonly Logger TheLogger = LogManager.GetCurrentClassLogger();
         private static AventStack.ExtentReports.ExtentReports ReportManager { get; set; }
-        private static string ApplicationDebuggingFolder => "c://temp/CreatingReports";
+        private static string ApplicationDebuggingFolder => @"C:\temp\CreatingReports";
 
         private static string HtmlReportFullPath { get; set; }
 
@@ -57,26 +58,26 @@ namespace TDD_Test_of_MyStore
 
         public static void ReportTestOutcome(string screenshotPath)
         {
-            var status = MyTestContext.Result;
-            var a = status.Outcome;
-            //switch (status)
-            //{
-            //    case UnitTestOutcome.Failed:
-            //        TheLogger.Error($"Test Failed=>{MyTestContext.FullyQualifiedTestClassName}");
-            //        CurrentTestCase.AddScreenCaptureFromPath(screenshotPath);
-            //        CurrentTestCase.Fail("Fail");
-            //        break;
-            //    case UnitTestOutcome.Inconclusive:
-            //        CurrentTestCase.AddScreenCaptureFromPath(screenshotPath);
-            //        CurrentTestCase.Warning("Inconclusive");
-            //        break;
-            //    case UnitTestOutcome.Unknown:
-            //        CurrentTestCase.Skip("Test skipped");
-            //        break;
-            //    default:
-            //        CurrentTestCase.Pass("Pass");
-            //        break;
-            //}
+            var status = MyTestContext.Result.Outcome.Status;
+
+            switch (status)
+            {
+                case TestStatus.Failed:
+                    TheLogger.Error($"Test Failed=>{MyTestContext.Test.FullName}");
+                    CurrentTestCase.AddScreenCaptureFromPath(screenshotPath);
+                    CurrentTestCase.Fail("Fail");
+                    break;
+                case TestStatus.Inconclusive:
+                    CurrentTestCase.AddScreenCaptureFromPath(screenshotPath);
+                    CurrentTestCase.Warning("Inconclusive");
+                    break;
+                case TestStatus.Skipped:
+                    CurrentTestCase.Skip("Test skipped");
+                    break;
+                default:
+                    CurrentTestCase.Pass("Pass");
+                    break;
+            }
 
             ReportManager.Flush();
         }

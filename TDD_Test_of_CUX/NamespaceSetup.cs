@@ -5,10 +5,10 @@ using System.Text;
 
 namespace TDD_Test_of_MyStore
 {
-    [TestFixture]
+    [SetUpFixture]
     public static class NamespaceSetup
     {
-        [TestAssemblyDirectoryResolve]
+        [OneTimeSetUp]
         public static void ExecuteForCreatingReportNamespace(TestContext testContext)
         {
             Reporter.StartReporter();
