@@ -1,6 +1,7 @@
 ﻿using NLog;
 using NUnit.Framework;
 using OpenQA.Selenium;
+using TDD_Test_of_MyStore;
 
 namespace TDD_Test_of_CUX.Tests
 {
@@ -24,6 +25,7 @@ namespace TDD_Test_of_CUX.Tests
         public void TCID1()
         {
             Assert.IsTrue(Driver.Title == "My Store" && Logo.Displayed);
+            Reporter.LogPassingTestStepToBugLogger("Assert: 'Main Window Displayed'");
         }
 
         [Description("Test switching between POPULAR and BESTSELLERS tabs")]
@@ -34,8 +36,10 @@ namespace TDD_Test_of_CUX.Tests
             LoggerObj.Debug("TCID2 - started");
             MainPageObj.popularAndBestSellersTab.SwitchToBestSellersTab();
             Assert.IsTrue(BestSellersTabParent.GetAttribute("class") == "active");
+            Reporter.LogPassingTestStepToBugLogger("Assert: 'BestSeller Tab is active'");
             MainPageObj.popularAndBestSellersTab.SwitchToPopularTab();
             Assert.IsTrue(PopularTabParent.GetAttribute("class") == "active");
+            Reporter.LogPassingTestStepToBugLogger("Assert: 'Popular Tab is active'");
             LoggerObj.Debug("TCID2 - stopped");
         }
     }
