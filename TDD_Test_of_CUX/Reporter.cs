@@ -12,13 +12,11 @@ namespace TDD_Test_of_MyStore
     {
         private static readonly Logger TheLogger = LogManager.GetCurrentClassLogger();
         private static AventStack.ExtentReports.ExtentReports ReportManager { get; set; }
-        private static string ApplicationDebuggingFolder => @"C:\temp\CreatingReports";
+        private static string ApplicationDebuggingFolder => @"C:\temp\TDD_Test_of_MyStore";
 
         private static string HtmlReportFullPath { get; set; }
 
         public static string LatestResultsReportFolder { get; set; }
-
-        private static TestContext MyTestContext { get; set; }
 
         private static ExtentTest CurrentTestCase { get; set; }
 
@@ -43,11 +41,10 @@ namespace TDD_Test_of_MyStore
             TheLogger.Trace("Full path of HTML report=>" + HtmlReportFullPath);
         }
 
-        public static void AddTestCaseMetadataToHtmlReport(TestContext testContext)
+        public static void AddTestCaseMetadataToHtmlReport()
         {
-            MyTestContext = testContext;
-            //CurrentTestCase = ReportManager.CreateTest(MyTestContext.TestName);
-            CurrentTestCase = ReportManager.CreateTest(MyTestContext.Test.Name);
+            var currentTestName = TestContext.CurrentContext.Test.FullName;
+            CurrentTestCase = ReportManager.CreateTest(currentTestName);
         }
 
         public static void LogPassingTestStepToBugLogger(string message)
@@ -58,12 +55,12 @@ namespace TDD_Test_of_MyStore
 
         public static void ReportTestOutcome(string screenshotPath)
         {
-            var status = MyTestContext.Result.Outcome.Status;
+            var status = TestContext.CurrentContext.Result.Outcome.Status;
 
             switch (status)
             {
                 case TestStatus.Failed:
-                    TheLogger.Error($"Test Failed=>{MyTestContext.Test.FullName}");
+                    TheLogger.Error($"Test Failed=>{TestContext.CurrentContext.Test.FullName}");
                     CurrentTestCase.AddScreenCaptureFromPath(screenshotPath);
                     CurrentTestCase.Fail("Fail");
                     break;

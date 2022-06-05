@@ -10,7 +10,7 @@
 
   <ItemGroup>
     <None Update="chromedriver.exe">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
 

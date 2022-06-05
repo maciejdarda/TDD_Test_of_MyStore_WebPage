@@ -1,17 +1,18 @@
 ﻿using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using NUnit.Framework.Internal;
+
 
 namespace TDD_Test_of_MyStore
 {
-    [SetUpFixture]
+    [TestFixture]
     public static class NamespaceSetup
     {
-        [OneTimeSetUp]
-        public static void ExecuteForCreatingReportNamespace(TestContext testContext)
-        {
-            Reporter.StartReporter();
-        }
+        //[OneTimeSetUp]
+        //public static void ExecuteForCreatingReportNamespace(TestContext testContext)
+        //{
+            
+        //    Reporter.StartReporter();
+        //    System.Console.WriteLine("jest");
+        //}
     }
 }
