@@ -1,9 +1,7 @@
 ﻿using NLog;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Interactions;
 using System;
-using System.Collections.Generic;
-using System.Text;
+using TDD_Test_of_MyStore;
 using TDD_Test_of_MyStore.Pages;
 
 namespace TDD_Test_of_CUX.Pages
@@ -15,14 +13,23 @@ namespace TDD_Test_of_CUX.Pages
             popularAndBestSellersTab = new PopularAndBestSellersTab(driver);
         }
 
+        private static Logger LoggerObj = LogManager.GetCurrentClassLogger();
         internal PopularAndBestSellersTab popularAndBestSellersTab { get; set; }
 
         string url = "http://automationpractice.com";
 
         internal void GoTo()
         {
-            _driver.Navigate().GoToUrl(@url);
-            _driver.Manage().Window.Maximize();
+            try
+            {
+                _driver.Navigate().GoToUrl(@url);
+                Reporter.LogPassingTestStepToBugLogger($"Page {@url} - Loaded");
+                _driver.Manage().Window.Maximize();
+            }
+            catch (Exception ex)
+            {
+                LoggerObj.Error(ex.Message);
+            }  
         }
     }
 }

@@ -24,8 +24,10 @@ namespace TDD_Test_of_CUX.Tests
         [Test]
         public void TCID1()
         {
+            LoggerObj.Debug("TCID1 - started");
             Assert.IsTrue(Driver.Title == "My Store" && Logo.Displayed);
             Reporter.LogPassingTestStepToBugLogger("Assert: 'Main Window Displayed'");
+            LoggerObj.Debug("TCID1 - stopped");
         }
 
         [Description("Test switching between POPULAR and BESTSELLERS tabs")]
