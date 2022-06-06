@@ -23,7 +23,7 @@ namespace TDD_Test_of_CUX.Pages
             try
             {
                 _driver.Navigate().GoToUrl(@url);
-                Reporter.LogPassingTestStepToBugLogger($"Page {@url} - Loaded");
+                Reporter.LogPassingTestStepToBugLogger($"Load: Page {@url}");
                 _driver.Manage().Window.Maximize();
             }
             catch (Exception ex)
