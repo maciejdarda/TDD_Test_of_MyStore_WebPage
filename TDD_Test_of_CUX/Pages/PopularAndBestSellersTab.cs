@@ -12,14 +12,14 @@ namespace TDD_Test_of_MyStore.Pages
         }
 
         private static Logger LoggerObj = LogManager.GetCurrentClassLogger();
-        public IWebElement popularTab => _driver.FindElement(By.XPath(@"//a[@href='#homefeatured']"));
-        public IWebElement bestSellersTab => _driver.FindElement(By.XPath(@"//a[@href='#blockbestsellers']"));
+        public IWebElement PopularTab => _driver.FindElement(By.XPath(@"//a[@href='#homefeatured']"));
+        public IWebElement BestSellersTab => _driver.FindElement(By.XPath(@"//a[@href='#blockbestsellers']"));
 
         internal void SwitchToPopularTab()
         {
             try
             {
-                popularTab.Click();
+                PopularTab.Click();
                 Reporter.LogTestStepForBugLogger(Status.Info, "Click: Popular tab");
             }
             catch (NoSuchElementException ex)
@@ -33,7 +33,7 @@ namespace TDD_Test_of_MyStore.Pages
         {
             try
             {
-                bestSellersTab.Click();
+                BestSellersTab.Click();
                 Reporter.LogTestStepForBugLogger(Status.Info, "Click: BestSeller tab");
             }
             catch (NoSuchElementException ex)

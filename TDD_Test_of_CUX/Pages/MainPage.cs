@@ -10,11 +10,13 @@ namespace TDD_Test_of_CUX.Pages
     {
         public MainPage(IWebDriver driver) : base(driver)
         {
-            popularAndBestSellersTab = new PopularAndBestSellersTab(driver);
+            PopularAndBestSellersTab = new PopularAndBestSellersTab(driver);
+            HomepageSlider = new HomepageSlider(driver);
         }
 
         private static Logger LoggerObj = LogManager.GetCurrentClassLogger();
-        internal PopularAndBestSellersTab popularAndBestSellersTab { get; set; }
+        internal PopularAndBestSellersTab PopularAndBestSellersTab { get; set; }
+        internal HomepageSlider HomepageSlider { get; set; }
 
         string url = "http://automationpractice.com";
 
