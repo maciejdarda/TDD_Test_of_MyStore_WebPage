@@ -1,7 +1,9 @@
 ﻿using AventStack.ExtentReports;
 using NLog;
+using NUnit.Framework;
 using OpenQA.Selenium;
 using System;
+using System.Threading;
 using TDD_Test_of_CUX;
 
 namespace TDD_Test_of_MyStore.Pages
@@ -22,6 +24,9 @@ namespace TDD_Test_of_MyStore.Pages
             {
                 NextButton.Click();
                 Reporter.LogTestStepForBugLogger(Status.Info, "Click: NextAdvers button");
+
+                //time to scroll the ad
+                Thread.Sleep(500);
             }
             catch (Exception)
             {
@@ -35,11 +40,20 @@ namespace TDD_Test_of_MyStore.Pages
             {
                 PrevButton.Click();
                 Reporter.LogTestStepForBugLogger(Status.Info, "Click: NextAdvers button");
+
+                //time to scroll the ad
+                Thread.Sleep(500);
             }
             catch (Exception)
             {
                 throw;
             }
+        }
+
+        internal void AssertThatAdHasChange(string currentHomeslider, string nextHomeslider)
+        {
+            Assert.AreNotEqual(currentHomeslider, nextHomeslider);
+            Reporter.LogPassingTestStepToBugLogger("Assert: 'Ad has changed'");
         }
     }
 }

@@ -2,6 +2,7 @@
 using OpenQA.Selenium;
 using AventStack.ExtentReports;
 using TDD_Test_of_CUX;
+using NUnit.Framework;
 
 namespace TDD_Test_of_MyStore.Pages
 {
@@ -42,6 +43,12 @@ namespace TDD_Test_of_MyStore.Pages
                 //zobaczyc co z tymi errorami w logach
                 LoggerObj.Error(ex.Message);
             }
+        }
+
+        internal void AssertThatElementIsActive(IWebElement tab)
+        {
+            Assert.IsTrue(tab.GetAttribute("class") == "active");
+            Reporter.LogPassingTestStepToBugLogger("Assert: 'Tab is active'");
         }
     }
 }

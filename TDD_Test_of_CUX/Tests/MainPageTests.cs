@@ -1,7 +1,6 @@
 ﻿using NLog;
 using NUnit.Framework;
 using OpenQA.Selenium;
-using TDD_Test_of_MyStore;
 
 namespace TDD_Test_of_CUX.Tests
 {
@@ -28,8 +27,8 @@ namespace TDD_Test_of_CUX.Tests
             LoggerObj.Debug("TCID1 - started");
 
             //page opening evoked in the [SetUp] from the BaseTest class
-            Assert.IsTrue(Driver.Title == "My Store" && Logo.Displayed);
-            Reporter.LogPassingTestStepToBugLogger("Assert: 'Main Window Displayed'");
+            //MainPageObj intialized in the BaseTest
+            MainPageObj.AssertThatPageIsOpen(Driver, Logo);
             LoggerObj.Debug("TCID1 - stopped");
         }
 
@@ -42,11 +41,9 @@ namespace TDD_Test_of_CUX.Tests
 
             //MainPageObj intialized in the BaseTest
             MainPageObj.PopularAndBestSellersTab.SwitchToBestSellersTab();
-            Assert.IsTrue(BestSellersTabParent.GetAttribute("class") == "active");
-            Reporter.LogPassingTestStepToBugLogger("Assert: 'BestSeller Tab is active'");
+            MainPageObj.PopularAndBestSellersTab.AssertThatElementIsActive(BestSellersTabParent);
             MainPageObj.PopularAndBestSellersTab.SwitchToPopularTab();
-            Assert.IsTrue(PopularTabParent.GetAttribute("class") == "active");
-            Reporter.LogPassingTestStepToBugLogger("Assert: 'Popular Tab is active'");
+            MainPageObj.PopularAndBestSellersTab.AssertThatElementIsActive(PopularTabParent);
             LoggerObj.Debug("TCID2 - stopped");
         }
 
@@ -60,32 +57,28 @@ namespace TDD_Test_of_CUX.Tests
             //NextButton functionality test #1
             var currentHomeslider = Homeslider.GetAttribute("style");
 
-            //MainPageObj intialized in BaseTest
+            //MainPageObj intialized in the BaseTest
             MainPageObj.HomepageSlider.SwitchAdverToNext();
             var nextHomeslider = Homeslider.GetAttribute("style");
-            Assert.AreNotEqual(currentHomeslider, nextHomeslider);
-            Reporter.LogPassingTestStepToBugLogger("Assert: 'Ad has changed'");
+            MainPageObj.HomepageSlider.AssertThatAdHasChange(currentHomeslider, nextHomeslider);
 
             //NextButton functionality test #2
             currentHomeslider = Homeslider.GetAttribute("style");
             MainPageObj.HomepageSlider.SwitchAdverToNext();
             nextHomeslider = Homeslider.GetAttribute("style");
-            Assert.AreNotEqual(currentHomeslider, nextHomeslider);
-            Reporter.LogPassingTestStepToBugLogger("Assert: 'Ad has changed'");
+            MainPageObj.HomepageSlider.AssertThatAdHasChange(currentHomeslider, nextHomeslider);
 
             //PrevButton functionality test #1
             currentHomeslider = Homeslider.GetAttribute("style");
             MainPageObj.HomepageSlider.SwitchAdverToPrev();
-            nextHomeslider = Homeslider.GetAttribute("style");
-            Assert.AreNotEqual(currentHomeslider, nextHomeslider);
-            Reporter.LogPassingTestStepToBugLogger("Assert: 'Ad has changed'");
+            nextHomeslider = Homeslider.GetAttribute("style"); 
+            MainPageObj.HomepageSlider.AssertThatAdHasChange(currentHomeslider, nextHomeslider);
 
             //PrevButton functionality test #2
             currentHomeslider = Homeslider.GetAttribute("style");
             MainPageObj.HomepageSlider.SwitchAdverToPrev();
             nextHomeslider = Homeslider.GetAttribute("style");
-            Assert.AreNotEqual(currentHomeslider, nextHomeslider);
-            Reporter.LogPassingTestStepToBugLogger("Assert: 'Ad has changed'");
+            MainPageObj.HomepageSlider.AssertThatAdHasChange(currentHomeslider, nextHomeslider);
 
             LoggerObj.Debug("TCID3 - stopped");
         }

@@ -1,4 +1,5 @@
 ﻿using NLog;
+using NUnit.Framework;
 using OpenQA.Selenium;
 using System;
 using TDD_Test_of_MyStore;
@@ -34,6 +35,12 @@ namespace TDD_Test_of_CUX.Pages
             {
                 LoggerObj.Error(ex.Message);
             }  
+        }
+
+        internal void AssertThatPageIsOpen(IWebDriver webDriver, IWebElement webElement)
+        {
+            Assert.IsTrue(webDriver.Title == "My Store" && webElement.Displayed);
+            Reporter.LogPassingTestStepToBugLogger("Assert: 'Main Window Displayed'");
         }
     }
 }
