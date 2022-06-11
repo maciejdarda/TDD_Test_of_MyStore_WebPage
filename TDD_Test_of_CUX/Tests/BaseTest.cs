@@ -15,31 +15,36 @@ namespace TDD_Test_of_CUX.Tests
         internal MainPage MainPageObj { get; set; }
         private ScreenshotTaker ScreenshotTaker { get; set; }
 
+        //a method evoked only once during object's creation from this namespace
         [OneTimeSetUp]
         public static void ExecuteForCreatingReportNamespace()
         {
             Reporter.StartReporter();
         }
 
+        //a method evoked every single time when a test starts 
         [SetUp]
         public void Setup()
         {
             Logger.Debug("************************ TEST STARTED");
             Logger.Debug("************************ TEST STARTED");
+
+            //set up test data for Reporter
             Reporter.AddTestCaseMetadataToHtmlReport();
             var factory = new WebDriverFactory();
+
+            //defining the browser type
             Driver = factory.Create(BrowserType.Chrome);
+
+            //an object can be accessed in all derived classes
             MainPageObj = new MainPage(Driver);
             MainPageObj.GoTo();
+
+            //an object can be accessed in all derived classes
             ScreenshotTaker = new ScreenshotTaker(Driver, TestContext.CurrentContext);
         }
 
-        //private IWebDriver GetChromeDriver()
-        //{
-        //    var outPutDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-        //    return new ChromeDriver(outPutDirectory);
-        //}
-
+        //a method evoked every single time at the end of a test
         [TearDown]
         public void TearDownTest()
         {
@@ -59,8 +64,8 @@ namespace TDD_Test_of_CUX.Tests
             {
                 StopBrowser();
                 Logger.Debug(TestContext.CurrentContext.Test.FullName);
-                Logger.Debug("*************************************** TEST STOPPED");
-                Logger.Debug("*************************************** TEST STOPPED");
+                Logger.Debug("************************ TEST STOPPED");
+                Logger.Debug("************************ TEST STOPPED");
             }
         }
 
@@ -68,11 +73,15 @@ namespace TDD_Test_of_CUX.Tests
         {
             if (ScreenshotTaker != null)
             {
+                //take screenshot if test failed 
                 ScreenshotTaker.CreateScreenshotIfTestFailed();
+
+                //if test outcome differs from Inconclusive/Failed - ScreenshotTaker.ScreenshotFilePath will be empty string 
                 Reporter.ReportTestOutcome(ScreenshotTaker.ScreenshotFilePath);
             }
             else
             {
+                //in case ScreenshotTaker is not initialized, it will not break [TearDownTest] method
                 Reporter.ReportTestOutcome("");
             }
         }

@@ -20,23 +20,27 @@ namespace TDD_Test_of_CUX.Tests
 
 
 
-        [Description("Test if Page can be open")]
+        [Description("Page opening test")]
         [Property("Author", "Maciej Darda")]
         [Test]
         public void TCID1()
         {
             LoggerObj.Debug("TCID1 - started");
+
+            //page opening evoked in the [SetUp] from the BaseTest class
             Assert.IsTrue(Driver.Title == "My Store" && Logo.Displayed);
             Reporter.LogPassingTestStepToBugLogger("Assert: 'Main Window Displayed'");
             LoggerObj.Debug("TCID1 - stopped");
         }
 
-        [Description("Test switching between POPULAR and BESTSELLERS tabs")]
+        [Description("Switching between POPULAR and BESTSELLERS tabs test")]
         [Property("Author", "Maciej Darda")]
         [Test]
         public void TCID2()
         {
             LoggerObj.Debug("TCID2 - started");
+
+            //MainPageObj intialized in the BaseTest
             MainPageObj.PopularAndBestSellersTab.SwitchToBestSellersTab();
             Assert.IsTrue(BestSellersTabParent.GetAttribute("class") == "active");
             Reporter.LogPassingTestStepToBugLogger("Assert: 'BestSeller Tab is active'");
@@ -46,35 +50,37 @@ namespace TDD_Test_of_CUX.Tests
             LoggerObj.Debug("TCID2 - stopped");
         }
 
-        [Description("Test of HomepageSlaider")]
+        [Description("HomepageSlaider test")]
         [Property("Author", "Maciej Darda")]
         [Test]
         public void TCID3()
         {
             LoggerObj.Debug("TCID3 - started");
 
-            //Test whether NextButton changes the displayed advertisement #1
+            //NextButton functionality test #1
             var currentHomeslider = Homeslider.GetAttribute("style");
+
+            //MainPageObj intialized in BaseTest
             MainPageObj.HomepageSlider.SwitchAdverToNext();
             var nextHomeslider = Homeslider.GetAttribute("style");
             Assert.AreNotEqual(currentHomeslider, nextHomeslider);
             Reporter.LogPassingTestStepToBugLogger("Assert: 'Ad has changed'");
 
-            //Test whether NextButton changes the displayed advertisement #2
+            //NextButton functionality test #2
             currentHomeslider = Homeslider.GetAttribute("style");
             MainPageObj.HomepageSlider.SwitchAdverToNext();
             nextHomeslider = Homeslider.GetAttribute("style");
             Assert.AreNotEqual(currentHomeslider, nextHomeslider);
             Reporter.LogPassingTestStepToBugLogger("Assert: 'Ad has changed'");
 
-            //Test whether PrevButton changes the displayed advertisement #1
+            //PrevButton functionality test #1
             currentHomeslider = Homeslider.GetAttribute("style");
             MainPageObj.HomepageSlider.SwitchAdverToPrev();
             nextHomeslider = Homeslider.GetAttribute("style");
             Assert.AreNotEqual(currentHomeslider, nextHomeslider);
             Reporter.LogPassingTestStepToBugLogger("Assert: 'Ad has changed'");
 
-            //Test whether PrevButton changes the displayed advertisement #2
+            //PrevButton functionality test #2
             currentHomeslider = Homeslider.GetAttribute("style");
             MainPageObj.HomepageSlider.SwitchAdverToPrev();
             nextHomeslider = Homeslider.GetAttribute("style");

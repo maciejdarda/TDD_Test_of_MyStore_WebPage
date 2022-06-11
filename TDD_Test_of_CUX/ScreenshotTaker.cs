@@ -3,8 +3,6 @@ using NUnit.Framework;
 using NUnit.Framework.Interfaces;
 using OpenQA.Selenium;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace TDD_Test_of_MyStore
 {
@@ -20,8 +18,6 @@ namespace TDD_Test_of_MyStore
                 return;
             _driver = driver;
             _testContext = testContext;
-            //tu poprawione
-            //ScreenshotFileName = _testContext.TestName;
             ScreenshotFileName = _testContext.Test.Name;
         }
 
@@ -30,10 +26,7 @@ namespace TDD_Test_of_MyStore
 
         public void CreateScreenshotIfTestFailed()
         {
-            //tu poprawione
-            //if (_testContext.CurrentTestOutcome == UnitTestOutcome.Failed ||
-            //    _testContext.CurrentTestOutcome == UnitTestOutcome.Inconclusive)
-            //    TakeScreenshotForFailure();
+            //check test outcome, if Inconclusive/Failed take screenshot
             if (_testContext.Result.Outcome.Status == TestStatus.Failed ||
                 _testContext.Result.Outcome.Status == TestStatus.Inconclusive)
                 TakeScreenshotForFailure();

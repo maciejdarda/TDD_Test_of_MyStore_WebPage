@@ -76,6 +76,7 @@ namespace TDD_Test_of_MyStore
                     break;
             }
 
+            //generate report
             ReportManager.Flush();
         }
 

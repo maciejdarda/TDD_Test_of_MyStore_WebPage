@@ -8,8 +8,10 @@ namespace TDD_Test_of_CUX.Pages
 {
     internal class MainPage : BaseClass
     {
+        //constructor with reference to BaseClass
         public MainPage(IWebDriver driver) : base(driver)
         {
+            //subpages' objects 
             PopularAndBestSellersTab = new PopularAndBestSellersTab(driver);
             HomepageSlider = new HomepageSlider(driver);
         }

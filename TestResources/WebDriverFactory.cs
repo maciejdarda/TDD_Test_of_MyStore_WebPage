@@ -19,8 +19,10 @@ namespace TestResources
             }
         }
 
+        //different types of drivers can be added in a similar way
         private IWebDriver GetChromeDriver()
         {
+            //return driver
             var outPutDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             return new ChromeDriver(outPutDirectory);
         }

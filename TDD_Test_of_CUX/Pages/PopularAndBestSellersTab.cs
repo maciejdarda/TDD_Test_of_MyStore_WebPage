@@ -7,6 +7,7 @@ namespace TDD_Test_of_MyStore.Pages
 {
     internal class PopularAndBestSellersTab : BaseClass
     {
+        //constructor with reference to BaseClass
         public PopularAndBestSellersTab(IWebDriver driver) : base(driver)
         {
         }
