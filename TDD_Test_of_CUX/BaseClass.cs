@@ -32,5 +32,12 @@ namespace TDD_Test_of_CUX
             actions.MoveToElement(element);
             actions.Perform();
         }
+
+        public void SendKeysToElement(IWebElement element, string text)
+        {
+            Actions actions = new Actions(_driver);
+            actions.SendKeys(element, text);
+            actions.Perform();
+        }
     }
 }
