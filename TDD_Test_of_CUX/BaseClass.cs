@@ -33,6 +33,7 @@ namespace TDD_Test_of_CUX
             actions.Perform();
         }
 
+        //accessible in all derived classes
         public void SendKeysToElement(IWebElement element, string text)
         {
             Actions actions = new Actions(_driver);

@@ -1,6 +1,8 @@
-﻿using NLog;
+﻿using AventStack.ExtentReports;
+using NLog;
 using NUnit.Framework;
 using OpenQA.Selenium;
+using TDD_Test_of_MyStore;
 
 namespace TDD_Test_of_CUX.Tests
 {
@@ -10,16 +12,17 @@ namespace TDD_Test_of_CUX.Tests
     {
         private static Logger LoggerObj = LogManager.GetCurrentClassLogger();
 
-        public IWebElement Logo => Driver.FindElement(By.XPath(@"//img[@class='logo img-responsive']"));
-        public IWebElement PopularTab => Driver.FindElement(By.XPath(@"//a[@href='#homefeatured']"));
-        public IWebElement BestSellersTab => Driver.FindElement(By.XPath(@"//a[@href='#blockbestsellers']"));
+        IWebElement Logo => Driver.FindElement(By.XPath(@"//img[@class='logo img-responsive']"));
+        IWebElement PopularTab => Driver.FindElement(By.XPath(@"//a[@href='#homefeatured']"));
+        IWebElement BestSellersTab => Driver.FindElement(By.XPath(@"//a[@href='#blockbestsellers']"));
         IWebElement BestSellersTabParent => BestSellersTab.FindElement(By.XPath("./.."));
         IWebElement PopularTabParent => PopularTab.FindElement(By.XPath("./.."));
-        public IWebElement Homeslider => Driver.FindElement(By.Id("homeslider"));
+        IWebElement Homeslider => Driver.FindElement(By.Id("homeslider"));
+        IWebElement NewsletterElement => Driver.FindElement(By.Id("newsletter_block_left"));
 
 
 
-        [Description("Page opening test")]
+        [Description("MainPage - test opening of the web page")]
         [Property("Author", "Maciej Darda")]
         [Test]
         public void TCID1()
@@ -32,7 +35,7 @@ namespace TDD_Test_of_CUX.Tests
             LoggerObj.Debug("TCID1 - stopped");
         }
 
-        [Description("Switching between POPULAR and BESTSELLERS tabs test")]
+        [Description("POPULAR and BESTSELLERS - test switching between tabs")]
         [Property("Author", "Maciej Darda")]
         [Test]
         public void TCID2()
@@ -47,7 +50,7 @@ namespace TDD_Test_of_CUX.Tests
             LoggerObj.Debug("TCID2 - stopped");
         }
 
-        [Description("HomepageSlaider test")]
+        [Description("HomepageSlaider - test switching ads")]
         [Property("Author", "Maciej Darda")]
         [Test]
         public void TCID3()
@@ -81,6 +84,32 @@ namespace TDD_Test_of_CUX.Tests
             MainPageObj.HomepageSlider.AssertThatAdHasChange(currentHomeslider, nextHomeslider);
 
             LoggerObj.Debug("TCID3 - stopped");
+        }
+
+        [Description("Newsletter - test the behavior when providing incorrect data or the lack")]
+        [Property("Author", "Maciej Darda")]
+        [Test]
+        public void TCID4()
+        {
+            LoggerObj.Debug("TCID4 - started");
+
+            //MainPageObj intialized in the BaseTest
+            //Method from BaseClass
+            //case 1 - submit incorrect email
+            MainPageObj.Newsletter.SendKeysToNewsLetter("bad_mail");
+            MainPageObj.Newsletter.SubmitNewsletter();
+            MainPageObj.Newsletter.AssertIncorrectNewsletterSubmission();
+
+            //caes 2 - submit empty emial
+            MainPageObj.MoveToElement(NewsletterElement);
+            Reporter.LogTestStepForBugLogger(Status.Info, "MoveTo - Newsletter");
+            Reporter.LogTestStepForBugLogger(Status.Info, "SendKeys - To Newsletter empty string");
+            
+            //Newsletter input should be empty after first invalid submit
+            MainPageObj.Newsletter.SubmitNewsletter();
+            MainPageObj.Newsletter.AssertIncorrectNewsletterSubmission();
+
+            LoggerObj.Debug("TCID4 - stopped");
         }
     }
 }
