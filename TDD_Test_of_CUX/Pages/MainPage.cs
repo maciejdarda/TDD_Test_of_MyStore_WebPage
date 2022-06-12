@@ -12,15 +12,20 @@ namespace TDD_Test_of_CUX.Pages
         //constructor with reference to BaseClass
         public MainPage(IWebDriver driver) : base(driver)
         {
-            //subpages' objects 
+            //subpages' objects inicialization
             PopularAndBestSellersTab = new PopularAndBestSellersTab(driver);
             HomepageSlider = new HomepageSlider(driver);
+            Newsletter = new Newsletter(driver);
         }
 
         private static Logger LoggerObj = LogManager.GetCurrentClassLogger();
+
+        //subpages' objects
         internal PopularAndBestSellersTab PopularAndBestSellersTab { get; set; }
         internal HomepageSlider HomepageSlider { get; set; }
+        internal Newsletter Newsletter { get; set; }
 
+        //main url to tested page 
         string url = "http://automationpractice.com";
 
         internal void GoTo()

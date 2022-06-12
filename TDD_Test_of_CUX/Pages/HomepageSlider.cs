@@ -1,5 +1,4 @@
 ﻿using AventStack.ExtentReports;
-using NLog;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using System;
