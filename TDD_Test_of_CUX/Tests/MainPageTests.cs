@@ -94,7 +94,6 @@ namespace TDD_Test_of_CUX.Tests
             LoggerObj.Debug("TCID4 - started");
 
             //MainPageObj intialized in the BaseTest
-            //Method from BaseClass
             //case 1 - submit incorrect email
             MainPageObj.Newsletter.SendKeysToNewsLetter("bad_mail");
             MainPageObj.Newsletter.SubmitNewsletter();
@@ -110,6 +109,21 @@ namespace TDD_Test_of_CUX.Tests
             MainPageObj.Newsletter.AssertIncorrectNewsletterSubmission();
 
             LoggerObj.Debug("TCID4 - stopped");
+        }
+
+        [Description("Newsletter - test the behavior when providing valid email")]
+        [Property("Author", "Maciej Darda")]
+        [Test]
+        public void TCID5()
+        {
+            LoggerObj.Debug("TCID5 - started");
+
+            //MainPageObj intialized in the BaseTest
+            MainPageObj.Newsletter.SendKeysToNewsLetter("goodmail@gmail.com");
+            MainPageObj.Newsletter.SubmitNewsletter();
+            MainPageObj.Newsletter.AssertProvidingValidEmail();
+
+            LoggerObj.Debug("TCID5 - stopped");
         }
     }
 }
