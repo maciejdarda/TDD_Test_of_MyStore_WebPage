@@ -1,7 +1,6 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Interactions;
 using System;
-using System.Threading;
 
 namespace TDD_Test_of_CUX
 {
@@ -58,6 +57,13 @@ namespace TDD_Test_of_CUX
             }
 
             return isDisplayed;
+        }
+
+        //accessible in all derived classes
+        public void MoveMouseOverElemnet(IWebElement element)
+        {
+            Actions action = new Actions(_driver);
+            action.MoveToElement(element).Perform();
         }
     }
 }
