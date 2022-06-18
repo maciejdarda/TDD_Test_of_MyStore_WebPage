@@ -16,6 +16,7 @@ namespace TDD_Test_of_CUX.Pages
             PopularAndBestSellersTab = new PopularAndBestSellersTab(driver);
             HomepageSlider = new HomepageSlider(driver);
             Newsletter = new Newsletter(driver);
+            TopMenu = new TopMenu(driver);
         }
 
         private static Logger LoggerObj = LogManager.GetCurrentClassLogger();
@@ -24,6 +25,7 @@ namespace TDD_Test_of_CUX.Pages
         internal PopularAndBestSellersTab PopularAndBestSellersTab { get; set; }
         internal HomepageSlider HomepageSlider { get; set; }
         internal Newsletter Newsletter { get; set; }
+        public TopMenu TopMenu { get; set; }
 
         //main url to tested page 
         string url = "http://automationpractice.com";
