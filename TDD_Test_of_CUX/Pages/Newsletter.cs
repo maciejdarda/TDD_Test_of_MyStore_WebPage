@@ -25,11 +25,11 @@ namespace TDD_Test_of_MyStore.Pages
             {
                 //method from BaseClass
                 MoveToElement(NewsletterElement);
-                Reporter.LogTestStepForBugLogger(Status.Info, "MoveTo - Newsletter");
+                Reporter.LogTestStepForBugLogger(Status.Info, "MoveTo: Newsletter");
 
                 //method from BaseClass
                 SendKeysToElement(NewsletterElement, text);
-                Reporter.LogTestStepForBugLogger(Status.Info, $"SendKeys - To Newsletter {text}");
+                Reporter.LogTestStepForBugLogger(Status.Info, $"SendKeys: To Newsletter {text}");
             }
             catch (Exception)
             {
@@ -42,7 +42,7 @@ namespace TDD_Test_of_MyStore.Pages
             try
             {
                 NewsletterSubmitButton.Click();
-                Reporter.LogTestStepForBugLogger(Status.Info, "Click - Newsletter submit button");
+                Reporter.LogTestStepForBugLogger(Status.Info, "Click: Newsletter submit button");
             }
             catch (Exception)
             {
@@ -57,11 +57,11 @@ namespace TDD_Test_of_MyStore.Pages
             {
                 Thread.Sleep(500);
                 Assert.IsTrue(AlertInvalidNewsletterSubmit.Displayed);
-                Reporter.LogPassingTestStepToBugLogger("Assert - alert displayed");
+                Reporter.LogPassingTestStepToBugLogger("Assert: alert displayed");
                 MoveToElement(NewsletterElement);
                 Thread.Sleep(500);
                 Assert.IsTrue(NewsletterInput.GetAttribute("value") == "Invalid email address.");
-                Reporter.LogPassingTestStepToBugLogger("Assert - Newsleter Input value change to 'Invalid email address.'");
+                Reporter.LogPassingTestStepToBugLogger("Assert: Newsleter Input value change to 'Invalid email address.'");
             }
             catch (Exception)
             {
@@ -87,11 +87,11 @@ namespace TDD_Test_of_MyStore.Pages
             {
                 Thread.Sleep(500);
                 Assert.IsTrue(elem.Displayed);
-                Reporter.LogPassingTestStepToBugLogger("Assert - alert displayed");
+                Reporter.LogPassingTestStepToBugLogger("Assert: alert displayed");
                 MoveToElement(NewsletterElement);
                 Thread.Sleep(500);
                 Assert.IsTrue(NewsletterInput.GetAttribute("value") == "You have successfully subscribed to this newsletter." || NewsletterInput.GetAttribute("value") == "This email address is already registered.");
-                Reporter.LogPassingTestStepToBugLogger("Assert - Newsleter Input value change to 'You have successfully subscribed to this newsletter.'");
+                Reporter.LogPassingTestStepToBugLogger("Assert: Newsleter Input value change to 'You have successfully subscribed to this newsletter.'");
             }
             catch (Exception)
             {

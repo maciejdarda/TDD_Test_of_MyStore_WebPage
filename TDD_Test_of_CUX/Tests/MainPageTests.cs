@@ -101,8 +101,8 @@ namespace TDD_Test_of_CUX.Tests
 
             //caes 2 - submit empty emial
             MainPageObj.MoveToElement(NewsletterElement);
-            Reporter.LogTestStepForBugLogger(Status.Info, "MoveTo - Newsletter");
-            Reporter.LogTestStepForBugLogger(Status.Info, "SendKeys - To Newsletter empty string");
+            Reporter.LogTestStepForBugLogger(Status.Info, "MoveTo: Newsletter");
+            Reporter.LogTestStepForBugLogger(Status.Info, "SendKeys: To Newsletter empty string");
             
             //Newsletter input should be empty after first invalid submit
             MainPageObj.Newsletter.SubmitNewsletter();
@@ -126,7 +126,7 @@ namespace TDD_Test_of_CUX.Tests
             LoggerObj.Debug("TCID5 - stopped");
         }
 
-        [Description("TopMemu - test unfold content after hover on WOMEN item")]
+        [Description("TopMemu - test unfold context panel after hover over WOMEN item")]
         [Property("Author", "Maciej Darda")]
         [Test]
         public void TCID6()
@@ -135,6 +135,7 @@ namespace TDD_Test_of_CUX.Tests
 
             //MainPageObj intialized in the BaseTest
             MainPageObj.TopMenu.MoveMouseOverWomenItem();
+            MainPageObj.TopMenu.AssertWomenItemDisplayed();
 
             LoggerObj.Debug("TCID6 - stopped");
         }

@@ -1,5 +1,8 @@
-﻿using OpenQA.Selenium;
+﻿using AventStack.ExtentReports;
+using NUnit.Framework;
+using OpenQA.Selenium;
 using System;
+using System.Collections.Generic;
 using System.Threading;
 using TDD_Test_of_CUX;
 
@@ -13,12 +16,21 @@ namespace TDD_Test_of_MyStore.Pages
         }
 
         IWebElement WomenItem => _driver.FindElement(By.XPath("//a[contains(text(), 'Women') and @title='Women']"));
+        IWebElement TopsHeader => _driver.FindElement(By.XPath("//a[@title='Tops']"));
+        IList<IWebElement> DressesHeader => _driver.FindElements(By.XPath("//a[@title='Tops']"));
+
 
         internal void MoveMouseOverWomenItem()
         {
-            //TODO add report steps and try/catch
             MoveMouseOverElemnet(WomenItem);
-            Thread.Sleep(5000);
+            Reporter.LogTestStepForBugLogger(Status.Info, "HoverMouseOver: WomenItem");
+            Thread.Sleep(1000);
+        }
+
+        internal void AssertWomenItemDisplayed()
+        {
+            Assert.IsTrue(TopsHeader.Displayed || DressesHeader[0].Displayed);
+            Reporter.LogPassingTestStepToBugLogger("Assert: WomenItem's panel displayed");
         }
     }
 }
