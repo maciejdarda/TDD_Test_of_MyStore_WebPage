@@ -125,5 +125,18 @@ namespace TDD_Test_of_CUX.Tests
 
             LoggerObj.Debug("TCID5 - stopped");
         }
+
+        [Description("TopMemu - test unfold content after hover on WOMEN item")]
+        [Property("Author", "Maciej Darda")]
+        [Test]
+        public void TCID6()
+        {
+            LoggerObj.Debug("TCID6 - started");
+
+            //MainPageObj intialized in the BaseTest
+            MainPageObj.TopMenu.MoveMouseOverWomenItem();
+
+            LoggerObj.Debug("TCID6 - stopped");
+        }
     }
 }
