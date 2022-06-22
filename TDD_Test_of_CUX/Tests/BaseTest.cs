@@ -11,7 +11,8 @@ namespace TDD_Test_of_MyStore.Tests
     {
         private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
         public IWebDriver Driver { get; set; }
-        internal MainPage MainPageObj { get; set; }
+        //internal MainPage MainPageObj { get; set; }
+        internal PageObejcts PageObejcts { get; set; } 
         private ScreenshotTaker ScreenshotTaker { get; set; }
 
         //a method evoked only once during object's creation from this namespace
@@ -36,8 +37,8 @@ namespace TDD_Test_of_MyStore.Tests
             Driver = factory.Create(BrowserType.Chrome);
 
             //an object can be accessed in all derived classes
-            MainPageObj = new MainPage(Driver);
-            MainPageObj.GoTo();
+            PageObejcts = new PageObejcts(Driver);
+            PageObejcts.MainPage.GoTo();
 
             //an object can be accessed in all derived classes
             ScreenshotTaker = new ScreenshotTaker(Driver, TestContext.CurrentContext);

@@ -10,21 +10,9 @@ namespace TDD_Test_of_MyStore.Pages
         //constructor with reference to BaseClass
         public MainPage(IWebDriver driver) : base(driver)
         {
-            //TODO zastanowic sie czy przeniesc to do osobnej kalsy
-            //subpages' objects inicialization
-            PopularAndBestSellersTab = new PopularAndBestSellersTab(driver);
-            HomepageSlider = new HomepageSlider(driver);
-            Newsletter = new Newsletter(driver);
-            TopMenu = new TopMenu(driver);
         }
 
         private static Logger LoggerObj = LogManager.GetCurrentClassLogger();
-
-        //subpages' objects
-        internal PopularAndBestSellersTab PopularAndBestSellersTab { get; set; }
-        internal HomepageSlider HomepageSlider { get; set; }
-        internal Newsletter Newsletter { get; set; }
-        public TopMenu TopMenu { get; set; }
 
         //main url to tested page 
         string url = "http://automationpractice.com";

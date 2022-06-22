@@ -29,8 +29,8 @@ namespace TDD_Test_of_MyStore.Tests
             LoggerObj.Debug("TCID1 - started");
 
             //page opening evoked in the [SetUp] from the BaseTest class
-            //MainPageObj intialized in the BaseTest
-            MainPageObj.AssertThatPageIsOpen(Driver, Logo);
+            //PageObejcts intialized in the BaseTest
+            PageObejcts.MainPage.AssertThatPageIsOpen(Driver, Logo);
             LoggerObj.Debug("TCID1 - stopped");
         }
 
@@ -41,11 +41,11 @@ namespace TDD_Test_of_MyStore.Tests
         {
             LoggerObj.Debug("TCID2 - started");
 
-            //MainPageObj intialized in the BaseTest
-            MainPageObj.PopularAndBestSellersTab.SwitchToBestSellersTab();
-            MainPageObj.PopularAndBestSellersTab.AssertThatElementIsActive(BestSellersTabParent);
-            MainPageObj.PopularAndBestSellersTab.SwitchToPopularTab();
-            MainPageObj.PopularAndBestSellersTab.AssertThatElementIsActive(PopularTabParent);
+            //PageObejcts intialized in the BaseTest
+            PageObejcts.PopularAndBestSellersTab.SwitchToBestSellersTab();
+            PageObejcts.PopularAndBestSellersTab.AssertThatElementIsActive(BestSellersTabParent);
+            PageObejcts.PopularAndBestSellersTab.SwitchToPopularTab();
+            PageObejcts.PopularAndBestSellersTab.AssertThatElementIsActive(PopularTabParent);
             LoggerObj.Debug("TCID2 - stopped");
         }
 
@@ -59,28 +59,28 @@ namespace TDD_Test_of_MyStore.Tests
             //NextButton functionality test #1
             var currentHomeslider = Homeslider.GetAttribute("style");
 
-            //MainPageObj intialized in the BaseTest
-            MainPageObj.HomepageSlider.SwitchAdverToNext();
+            //PageObejcts intialized in the BaseTest
+            PageObejcts.HomepageSlider.SwitchAdverToNext();
             var nextHomeslider = Homeslider.GetAttribute("style");
-            MainPageObj.HomepageSlider.AssertThatAdHasChange(currentHomeslider, nextHomeslider);
+            PageObejcts.HomepageSlider.AssertThatAdHasChange(currentHomeslider, nextHomeslider);
 
             //NextButton functionality test #2
             currentHomeslider = Homeslider.GetAttribute("style");
-            MainPageObj.HomepageSlider.SwitchAdverToNext();
+            PageObejcts.HomepageSlider.SwitchAdverToNext();
             nextHomeslider = Homeslider.GetAttribute("style");
-            MainPageObj.HomepageSlider.AssertThatAdHasChange(currentHomeslider, nextHomeslider);
+            PageObejcts.HomepageSlider.AssertThatAdHasChange(currentHomeslider, nextHomeslider);
 
             //PrevButton functionality test #1
             currentHomeslider = Homeslider.GetAttribute("style");
-            MainPageObj.HomepageSlider.SwitchAdverToPrev();
-            nextHomeslider = Homeslider.GetAttribute("style"); 
-            MainPageObj.HomepageSlider.AssertThatAdHasChange(currentHomeslider, nextHomeslider);
+            PageObejcts.HomepageSlider.SwitchAdverToPrev();
+            nextHomeslider = Homeslider.GetAttribute("style");
+            PageObejcts.HomepageSlider.AssertThatAdHasChange(currentHomeslider, nextHomeslider);
 
             //PrevButton functionality test #2
             currentHomeslider = Homeslider.GetAttribute("style");
-            MainPageObj.HomepageSlider.SwitchAdverToPrev();
+            PageObejcts.HomepageSlider.SwitchAdverToPrev();
             nextHomeslider = Homeslider.GetAttribute("style");
-            MainPageObj.HomepageSlider.AssertThatAdHasChange(currentHomeslider, nextHomeslider);
+            PageObejcts.HomepageSlider.AssertThatAdHasChange(currentHomeslider, nextHomeslider);
 
             LoggerObj.Debug("TCID3 - stopped");
         }
@@ -92,20 +92,20 @@ namespace TDD_Test_of_MyStore.Tests
         {
             LoggerObj.Debug("TCID4 - started");
 
-            //MainPageObj intialized in the BaseTest
+            //PageObejcts intialized in the BaseTest
             //case 1 - submit incorrect email
-            MainPageObj.Newsletter.SendKeysToNewsLetter("bad_mail");
-            MainPageObj.Newsletter.SubmitNewsletter();
-            MainPageObj.Newsletter.AssertIncorrectNewsletterSubmission();
+            PageObejcts.Newsletter.SendKeysToNewsLetter("bad_mail");
+            PageObejcts.Newsletter.SubmitNewsletter();
+            PageObejcts.Newsletter.AssertIncorrectNewsletterSubmission();
 
             //caes 2 - submit empty emial
-            MainPageObj.MoveToElement(NewsletterElement);
+            PageObejcts.MoveToElement(NewsletterElement);
             Reporter.LogTestStepForBugLogger(Status.Info, "MoveTo: Newsletter");
             Reporter.LogTestStepForBugLogger(Status.Info, "SendKeys: To Newsletter empty string");
-            
+
             //Newsletter input should be empty after first invalid submit
-            MainPageObj.Newsletter.SubmitNewsletter();
-            MainPageObj.Newsletter.AssertIncorrectNewsletterSubmission();
+            PageObejcts.Newsletter.SubmitNewsletter();
+            PageObejcts.Newsletter.AssertIncorrectNewsletterSubmission();
 
             LoggerObj.Debug("TCID4 - stopped");
         }
@@ -117,10 +117,10 @@ namespace TDD_Test_of_MyStore.Tests
         {
             LoggerObj.Debug("TCID5 - started");
 
-            //MainPageObj intialized in the BaseTest
-            MainPageObj.Newsletter.SendKeysToNewsLetter("goodmail@gmail.com");
-            MainPageObj.Newsletter.SubmitNewsletter();
-            MainPageObj.Newsletter.AssertProvidingValidEmail();
+            //PageObejcts intialized in the BaseTest
+            PageObejcts.Newsletter.SendKeysToNewsLetter("goodmail@gmail.com");
+            PageObejcts.Newsletter.SubmitNewsletter();
+            PageObejcts.Newsletter.AssertProvidingValidEmail();
 
             LoggerObj.Debug("TCID5 - stopped");
         }
@@ -132,9 +132,9 @@ namespace TDD_Test_of_MyStore.Tests
         {
             LoggerObj.Debug("TCID6 - started");
 
-            //MainPageObj intialized in the BaseTest
-            MainPageObj.TopMenu.MoveMouseOverWomenItem();
-            MainPageObj.TopMenu.AssertWomenItemDisplayed();
+            //PageObejcts intialized in the BaseTest
+            PageObejcts.TopMenu.MoveMouseOverWomenItem();
+            PageObejcts.TopMenu.AssertWomenItemDisplayed();
 
             LoggerObj.Debug("TCID6 - stopped");
         }
