@@ -38,7 +38,7 @@ namespace TDD_Test_of_MyStore.Tests
 
             //an object can be accessed in all derived classes
             PageObejcts = new PageObejcts(Driver);
-            PageObejcts.MainPage.GoTo();
+            GoToURL();
 
             //an object can be accessed in all derived classes
             ScreenshotTaker = new ScreenshotTaker(Driver, TestContext.CurrentContext);
@@ -93,6 +93,12 @@ namespace TDD_Test_of_MyStore.Tests
             Driver.Quit();
             Driver = null;
             Logger.Trace("Browser stopped successfully.");
+        }
+
+        //if you want tests for a given [TestFixture] to start in another URL, override this method
+         virtual internal void GoToURL()
+        {
+            PageObejcts.MainPage.GoTo();
         }
     }
 }
