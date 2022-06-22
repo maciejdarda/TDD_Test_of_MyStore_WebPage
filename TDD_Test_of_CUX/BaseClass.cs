@@ -2,7 +2,7 @@
 using OpenQA.Selenium.Interactions;
 using System;
 
-namespace TDD_Test_of_CUX
+namespace TDD_Test_of_MyStore
 {
     public class BaseClass
     {

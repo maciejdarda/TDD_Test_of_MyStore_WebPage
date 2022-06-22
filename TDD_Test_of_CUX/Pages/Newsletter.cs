@@ -1,5 +1,4 @@
 ﻿using OpenQA.Selenium;
-using TDD_Test_of_CUX;
 using AventStack.ExtentReports;
 using System;
 using NUnit.Framework;

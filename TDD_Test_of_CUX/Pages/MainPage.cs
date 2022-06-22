@@ -2,10 +2,8 @@
 using NUnit.Framework;
 using OpenQA.Selenium;
 using System;
-using TDD_Test_of_MyStore;
-using TDD_Test_of_MyStore.Pages;
 
-namespace TDD_Test_of_CUX.Pages
+namespace TDD_Test_of_MyStore.Pages
 {
     internal class MainPage : BaseClass
     {

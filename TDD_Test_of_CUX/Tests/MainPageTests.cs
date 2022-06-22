@@ -2,9 +2,8 @@
 using NLog;
 using NUnit.Framework;
 using OpenQA.Selenium;
-using TDD_Test_of_MyStore;
 
-namespace TDD_Test_of_CUX.Tests
+namespace TDD_Test_of_MyStore.Tests
 {
     [TestFixture]
     [Category("Main Page funcionality and navigation")]

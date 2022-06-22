@@ -1,10 +1,8 @@
 ﻿using AventStack.ExtentReports;
 using NUnit.Framework;
 using OpenQA.Selenium;
-using System;
 using System.Collections.Generic;
 using System.Threading;
-using TDD_Test_of_CUX;
 
 namespace TDD_Test_of_MyStore.Pages
 {

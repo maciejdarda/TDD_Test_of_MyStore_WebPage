@@ -2,11 +2,10 @@
 using NUnit.Framework;
 using OpenQA.Selenium;
 using System;
-using TDD_Test_of_CUX.Pages;
-using TDD_Test_of_MyStore;
+using TDD_Test_of_MyStore.Pages;
 using TestResources;
 
-namespace TDD_Test_of_CUX.Tests
+namespace TDD_Test_of_MyStore.Tests
 {
     public class BaseTest
     {

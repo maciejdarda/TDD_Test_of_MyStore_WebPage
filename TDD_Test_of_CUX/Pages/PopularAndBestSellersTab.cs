@@ -1,7 +1,6 @@
 ﻿using NLog;
 using OpenQA.Selenium;
 using AventStack.ExtentReports;
-using TDD_Test_of_CUX;
 using NUnit.Framework;
 
 namespace TDD_Test_of_MyStore.Pages

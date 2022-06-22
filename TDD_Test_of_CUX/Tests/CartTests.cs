@@ -1,5 +1,4 @@
-﻿using TDD_Test_of_CUX.Tests;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using NLog;
 
 namespace TDD_Test_of_MyStore.Tests
