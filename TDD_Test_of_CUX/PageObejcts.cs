@@ -8,6 +8,7 @@ namespace TDD_Test_of_MyStore
         public PageObejcts(IWebDriver driver) : base(driver)
         {
             //subpages' objects inicialization
+            MainPage = new MainPage(driver);
             PopularAndBestSellersTab = new PopularAndBestSellersTab(driver);
             HomepageSlider = new HomepageSlider(driver);
             Newsletter = new Newsletter(driver);
@@ -15,7 +16,7 @@ namespace TDD_Test_of_MyStore
         }
 
         //subpages' objects
-        public MainPage MyProperty { get; set; }
+        public MainPage MainPage { get; set; }
         internal PopularAndBestSellersTab PopularAndBestSellersTab { get; set; }
         internal HomepageSlider HomepageSlider { get; set; }
         internal Newsletter Newsletter { get; set; }
