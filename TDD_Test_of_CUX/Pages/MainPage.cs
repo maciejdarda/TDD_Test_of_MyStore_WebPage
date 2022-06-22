@@ -12,6 +12,7 @@ namespace TDD_Test_of_CUX.Pages
         //constructor with reference to BaseClass
         public MainPage(IWebDriver driver) : base(driver)
         {
+            //TODO zastanowic sie czy przeniesc to do osobnej kalsy
             //subpages' objects inicialization
             PopularAndBestSellersTab = new PopularAndBestSellersTab(driver);
             HomepageSlider = new HomepageSlider(driver);

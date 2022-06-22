@@ -9,5 +9,7 @@ namespace TDD_Test_of_MyStore.Tests
     class CartTests : BaseTest
     {
         private static Logger LoggerObj = LogManager.GetCurrentClassLogger();
+
+
     }
 }
