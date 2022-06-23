@@ -13,6 +13,7 @@ namespace TDD_Test_of_MyStore
             HomepageSlider = new HomepageSlider(driver);
             Newsletter = new Newsletter(driver);
             TopMenu = new TopMenu(driver);
+            CartOnMainPage = new CartOnMainPage(driver);
         }
 
         //subpages' objects
@@ -21,5 +22,6 @@ namespace TDD_Test_of_MyStore
         internal HomepageSlider HomepageSlider { get; set; }
         internal Newsletter Newsletter { get; set; }
         public TopMenu TopMenu { get; set; }
+        public CartOnMainPage CartOnMainPage { get; set; }
     }
 }

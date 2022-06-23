@@ -34,6 +34,7 @@ namespace TDD_Test_of_MyStore.Pages
 
         internal void SwitchAdverToPrev()
         {
+            //TODO poprawic te catche
             try
             {
                 PrevButton.Click();

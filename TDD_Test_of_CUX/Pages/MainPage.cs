@@ -34,7 +34,7 @@ namespace TDD_Test_of_MyStore.Pages
         internal void AssertThatPageIsOpen(IWebDriver webDriver, IWebElement webElement)
         {
             Assert.IsTrue(webDriver.Title == "My Store" && webElement.Displayed);
-            Reporter.LogPassingTestStepToBugLogger("Assert: 'Main Window Displayed'");
+            Reporter.LogPassingTestStepToBugLogger("Assert: 'Main page Displayed'");
         }
     }
 }
