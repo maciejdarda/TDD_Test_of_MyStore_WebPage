@@ -14,6 +14,7 @@ namespace TDD_Test_of_MyStore
             Newsletter = new Newsletter(driver);
             TopMenu = new TopMenu(driver);
             CartOnMainPage = new CartOnMainPage(driver);
+            CentralColumn = new CentralColumn(driver);
         }
 
         //subpages' objects
@@ -23,5 +24,6 @@ namespace TDD_Test_of_MyStore
         internal Newsletter Newsletter { get; set; }
         public TopMenu TopMenu { get; set; }
         public CartOnMainPage CartOnMainPage { get; set; }
+        public CentralColumn CentralColumn { get; set; }
     }
 }

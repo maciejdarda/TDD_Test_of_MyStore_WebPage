@@ -22,5 +22,17 @@ namespace TDD_Test_of_MyStore.Tests
             LoggerObj.Debug("TCID1 - stopped");
         }
 
+        [Description("Cart - test add item to the cart")]
+        [Property("Author", "Maciej Darda")]
+        [Test]
+        public void TCID2()
+        {
+            LoggerObj.Debug("TCID2 - started");
+
+            PageObejcts.CentralColumn.AddItemToCart();
+            PageObejcts.CartOnMainPage.AssertThatItemIsAddedToCart();
+
+            LoggerObj.Debug("TCID2 - stopped");
+        }
     }
 }
