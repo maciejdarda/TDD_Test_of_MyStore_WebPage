@@ -23,8 +23,7 @@ namespace TDD_Test_of_MyStore.Pages
 
         internal void MoveMouseOverWomenItem()
         {
-            MoveMouseOverElemnet(WomenItem);
-            Reporter.LogTestStepForBugLogger(Status.Info, "HoverMouseOver: WomenItem");
+            MoveMouseOverElemnet(WomenItem, "WomenItem button");
             Thread.Sleep(1000);
         }
 

@@ -35,6 +35,7 @@ namespace TDD_Test_of_MyStore
         {
             var filePath = Path.GetFullPath(ApplicationDebuggingFolder);
             LatestResultsReportFolder = Path.Combine(filePath, DateTime.Now.ToString("MMdd_HHmm"));
+            //add try catch to this
             Directory.CreateDirectory(LatestResultsReportFolder);
 
             HtmlReportFullPath = $"{LatestResultsReportFolder}\\TestResults.html";

@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium;
+﻿using AventStack.ExtentReports;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Interactions;
 using System;
 
@@ -20,22 +21,24 @@ namespace TDD_Test_of_MyStore
         /// accessible in all derived classes
         /// </summary>
         /// <param name="elementToHL"></param>
-        public void HighlightElement(IWebElement elementToHL)
+        public void HighlightElement(IWebElement elementToHL, string reportMessage)
         {
             var jsDriver = (IJavaScriptExecutor)_driver;
             string highlightJavascript = @"$(arguments[0]).css({ ""border-width"" : ""2px"", ""border-style"" : ""solid"", ""border-color"" : ""red"" });";
-            jsDriver.ExecuteScript(highlightJavascript, new object[] { elementToHL }); ;
+            jsDriver.ExecuteScript(highlightJavascript, new object[] { elementToHL });
+            Reporter.LogTestStepForBugLogger(Status.Info, $"Highlight: {reportMessage}");
         }
 
         /// <summary>
         /// accessible in all derived classes
         /// </summary>
         /// <param name="element"></param>
-        public void MoveToElement(IWebElement element)
+        public void MoveToElement(IWebElement element, string reportMessage)
         {
             Actions actions = new Actions(_driver);
             actions.MoveToElement(element);
             actions.Perform();
+            Reporter.LogTestStepForBugLogger(Status.Info, $"MoveTo: {reportMessage}");
         }
 
         /// <summary>
@@ -43,11 +46,12 @@ namespace TDD_Test_of_MyStore
         /// </summary>
         /// <param name="element"></param>
         /// <param name="text"></param>
-        public void SendKeysToElement(IWebElement element, string text)
+        public void SendKeysToElement(IWebElement element, string text, string reportMessage)
         {
             Actions actions = new Actions(_driver);
             actions.SendKeys(element, text);
             actions.Perform();
+            Reporter.LogTestStepForBugLogger(Status.Info, $"SendKeys: '{text}' to {reportMessage}");
         }
 
         /// <summary>
@@ -55,7 +59,7 @@ namespace TDD_Test_of_MyStore
         /// </summary>
         /// <param name="element"></param>
         /// <returns></returns>
-        public bool CheckIfElementIsDisplayed(IWebElement element)
+        public bool CheckIfElementIsDisplayed(IWebElement element, string reportMessage)
         {
             bool isDisplayed = false;
 
@@ -70,6 +74,7 @@ namespace TDD_Test_of_MyStore
                 isDisplayed = false;
             }
 
+            Reporter.LogTestStepForBugLogger(Status.Info, $"DisplayCheck: {reportMessage} {isDisplayed}");
             return isDisplayed;
         }
 
@@ -77,10 +82,11 @@ namespace TDD_Test_of_MyStore
         /// accessible in all derived classes
         /// </summary>
         /// <param name="element"></param>
-        public void MoveMouseOverElemnet(IWebElement element)
+        public void MoveMouseOverElemnet(IWebElement element, string reportMessage)
         {
             Actions action = new Actions(_driver);
             action.MoveToElement(element).Perform();
+            Reporter.LogTestStepForBugLogger(Status.Info, $"MoveMouseAbove: {reportMessage}");
         }
     }
 }

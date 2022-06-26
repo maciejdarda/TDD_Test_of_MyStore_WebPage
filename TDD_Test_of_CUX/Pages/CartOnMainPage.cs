@@ -41,8 +41,7 @@ namespace TDD_Test_of_MyStore.Pages
             Reporter.LogPassingTestStepToBugLogger("Assert: Cart panel is displayed");
             CloseWindowButton.Click();
             Reporter.LogTestStepForBugLogger(Status.Info, "Click: Close window button");
-            MoveToElement(CartOnMain);
-            Reporter.LogTestStepForBugLogger(Status.Info, "MoveTo: Cart");
+            MoveToElement(CartOnMain, "CartOnMain");
             Assert.IsTrue(CartCounter[0].Text == "1", "Cart counter displaying wrong number of items");
             Reporter.LogPassingTestStepToBugLogger("Assert: Cart counter displayed correct amount of items");
         }

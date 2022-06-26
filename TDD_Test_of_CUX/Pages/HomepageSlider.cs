@@ -41,7 +41,7 @@ namespace TDD_Test_of_MyStore.Pages
             try
             {
                 PrevButton.Click();
-                Reporter.LogTestStepForBugLogger(Status.Info, "Click: NextAdvers button");
+                Reporter.LogTestStepForBugLogger(Status.Info, "Click: PrevAdvers button");
 
                 //time to scroll the ad
                 Thread.Sleep(500);

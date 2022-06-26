@@ -21,10 +21,8 @@ namespace TDD_Test_of_MyStore.Pages
 
         internal void AddItemToCart()
         {
-            MoveToElement(FirstItemInCentralColumn[0]);
-            Reporter.LogTestStepForBugLogger(Status.Info, "MoveTo: FirstItemInCentralColumn");
-            MoveMouseOverElemnet(ImgForFirstItemInCentralColumn[0]);
-            Reporter.LogTestStepForBugLogger(Status.Info, "HoverMouseOver: FirstItemInCentralColumn");
+            MoveToElement(FirstItemInCentralColumn[0], "FirstItemInCentralColumn");
+            MoveMouseOverElemnet(ImgForFirstItemInCentralColumn[0], "ImgForFirstItemInCentralColumn");
             Thread.Sleep(500);
             FadedShortsAddToCartButton[0].Click();
             Reporter.LogTestStepForBugLogger(Status.Info, "Click: FadedShortsAddToCartButton");

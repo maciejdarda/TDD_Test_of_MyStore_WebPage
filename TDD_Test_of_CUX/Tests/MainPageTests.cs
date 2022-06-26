@@ -99,8 +99,7 @@ namespace TDD_Test_of_MyStore.Tests
             PageObejcts.Newsletter.AssertIncorrectNewsletterSubmission();
 
             //caes 2 - submit empty emial
-            PageObejcts.MoveToElement(NewsletterElement);
-            Reporter.LogTestStepForBugLogger(Status.Info, "MoveTo: Newsletter");
+            PageObejcts.MoveToElement(NewsletterElement, "NewsletterElement");
             Reporter.LogTestStepForBugLogger(Status.Info, "SendKeys: To Newsletter empty string");
 
             //Newsletter input should be empty after first invalid submit
