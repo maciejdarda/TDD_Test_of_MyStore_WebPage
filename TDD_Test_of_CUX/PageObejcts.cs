@@ -18,12 +18,12 @@ namespace TDD_Test_of_MyStore
         }
 
         //subpages' objects
-        public MainPage MainPage { get; set; }
+        internal MainPage MainPage { get; set; }
         internal PopularAndBestSellersTab PopularAndBestSellersTab { get; set; }
         internal HomepageSlider HomepageSlider { get; set; }
         internal Newsletter Newsletter { get; set; }
-        public TopMenu TopMenu { get; set; }
-        public CartOnMainPage CartOnMainPage { get; set; }
-        public CentralColumn CentralColumn { get; set; }
+        internal TopMenu TopMenu { get; set; }
+        internal CartOnMainPage CartOnMainPage { get; set; }
+        internal CentralColumn CentralColumn { get; set; }
     }
 }
