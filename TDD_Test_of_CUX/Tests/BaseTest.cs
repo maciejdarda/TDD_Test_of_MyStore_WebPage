@@ -93,9 +93,7 @@ namespace TDD_Test_of_MyStore.Tests
 
         private void StopBrowser()
         {
-            if (Driver == null)
-                return;
-            Driver.Quit();
+            Driver?.Quit();
             Driver = null;
             Logger.Trace("Browser stopped successfully.");
         }
