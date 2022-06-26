@@ -8,15 +8,14 @@ namespace TestResources
 {
     public class WebDriverFactory
     {
+        //in this method you can define type of the browser
         public IWebDriver Create(BrowserType browserType)
         {
-            switch (browserType)
+            return browserType switch
             {
-                case BrowserType.Chrome:
-                    return GetChromeDriver();
-                default:
-                    throw new ArgumentOutOfRangeException("No such browser exists");
-            }
+                BrowserType.Chrome => GetChromeDriver(),
+                _ => throw new ArgumentOutOfRangeException("No such browser exists"),
+            };
         }
 
         //different types of drivers can be added in a similar way
