@@ -7,7 +7,10 @@ namespace TDD_Test_of_MyStore.Pages
 {
     internal class CentralColumn : BaseClass
     {
-        //constructor with reference to BaseClass
+        /// <summary>
+        /// constructor with reference to BaseClass
+        /// </summary>
+        /// <param name="driver"></param>
         public CentralColumn(IWebDriver driver) : base(driver)
         {
         }

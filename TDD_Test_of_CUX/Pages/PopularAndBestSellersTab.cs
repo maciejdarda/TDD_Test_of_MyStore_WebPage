@@ -7,7 +7,10 @@ namespace TDD_Test_of_MyStore.Pages
 {
     internal class PopularAndBestSellersTab : BaseClass
     {
-        //constructor with reference to BaseClass
+        /// <summary>
+        /// constructor with reference to BaseClass
+        /// </summary>
+        /// <param name="driver"></param>
         public PopularAndBestSellersTab(IWebDriver driver) : base(driver)
         {
         }
@@ -25,7 +28,7 @@ namespace TDD_Test_of_MyStore.Pages
             }
             catch (NoSuchElementException ex)
             {
-                //zobaczyc co z tymi errorami w logach
+                //TODO zobaczyc co z tymi errorami w logach
                 LoggerObj.Error(ex.Message);
             }
         }
@@ -39,7 +42,7 @@ namespace TDD_Test_of_MyStore.Pages
             }
             catch (NoSuchElementException ex)
             {
-                //zobaczyc co z tymi errorami w logach
+                //TODO zobaczyc co z tymi errorami w logach
                 LoggerObj.Error(ex.Message);
             }
         }

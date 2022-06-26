@@ -8,7 +8,10 @@ namespace TDD_Test_of_MyStore.Pages
 {
     internal class Newsletter : BaseClass
     {
-        //constructor with reference to BaseClass
+        /// <summary>
+        /// constructor with reference to BaseClass
+        /// </summary>
+        /// <param name="driver"></param>
         public Newsletter(IWebDriver driver) : base(driver)
         {
         }

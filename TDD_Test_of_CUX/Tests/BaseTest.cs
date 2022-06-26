@@ -11,18 +11,21 @@ namespace TDD_Test_of_MyStore.Tests
     {
         private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
         public IWebDriver Driver { get; set; }
-        //internal MainPage MainPageObj { get; set; }
         internal PageObejcts PageObejcts { get; set; } 
         private ScreenshotTaker ScreenshotTaker { get; set; }
 
-        //a method evoked only once during object's creation from this namespace
+        /// <summary>
+        /// a method evoked only once during object's creation from this namespace
+        /// </summary>
         [OneTimeSetUp]
         public static void ExecuteForCreatingReportNamespace()
         {
             Reporter.StartReporter();
         }
 
-        //a method evoked every single time when a test starts 
+        /// <summary>
+        /// a method evoked every single time when a test starts 
+        /// </summary>
         [SetUp]
         public void Setup()
         {
@@ -44,7 +47,9 @@ namespace TDD_Test_of_MyStore.Tests
             ScreenshotTaker = new ScreenshotTaker(Driver, TestContext.CurrentContext);
         }
 
-        //a method evoked every single time at the end of a test
+        /// <summary>
+        /// a method evoked every single time at the end of a test
+        /// </summary>
         [TearDown]
         public void TearDownTest()
         {
@@ -95,8 +100,10 @@ namespace TDD_Test_of_MyStore.Tests
             Logger.Trace("Browser stopped successfully.");
         }
 
-        //if you want tests for a given [TestFixture] to start in another URL, override this method
-         virtual internal void GoToURL()
+        /// <summary>
+        /// if you want tests for a given [TestFixture] to start in another URL, override this method
+        /// </summary>
+        virtual internal void GoToURL()
         {
             PageObejcts.MainPage.GoTo();
         }

@@ -16,7 +16,10 @@ namespace TDD_Test_of_MyStore
             _driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
         }
 
-        //accessible in all derived classes
+        /// <summary>
+        /// accessible in all derived classes
+        /// </summary>
+        /// <param name="elementToHL"></param>
         public void HighlightElement(IWebElement elementToHL)
         {
             var jsDriver = (IJavaScriptExecutor)_driver;
@@ -24,7 +27,10 @@ namespace TDD_Test_of_MyStore
             jsDriver.ExecuteScript(highlightJavascript, new object[] { elementToHL }); ;
         }
 
-        //accessible in all derived classes
+        /// <summary>
+        /// accessible in all derived classes
+        /// </summary>
+        /// <param name="element"></param>
         public void MoveToElement(IWebElement element)
         {
             Actions actions = new Actions(_driver);
@@ -32,7 +38,11 @@ namespace TDD_Test_of_MyStore
             actions.Perform();
         }
 
-        //accessible in all derived classes
+        /// <summary>
+        /// accessible in all derived classes
+        /// </summary>
+        /// <param name="element"></param>
+        /// <param name="text"></param>
         public void SendKeysToElement(IWebElement element, string text)
         {
             Actions actions = new Actions(_driver);
@@ -40,7 +50,11 @@ namespace TDD_Test_of_MyStore
             actions.Perform();
         }
 
-        //accessible in all derived classes
+        /// <summary>
+        /// accessible in all derived classes
+        /// </summary>
+        /// <param name="element"></param>
+        /// <returns></returns>
         public bool CheckIfElementIsDisplayed(IWebElement element)
         {
             bool isDisplayed = false;
@@ -59,7 +73,10 @@ namespace TDD_Test_of_MyStore
             return isDisplayed;
         }
 
-        //accessible in all derived classes
+        /// <summary>
+        /// accessible in all derived classes
+        /// </summary>
+        /// <param name="element"></param>
         public void MoveMouseOverElemnet(IWebElement element)
         {
             Actions action = new Actions(_driver);

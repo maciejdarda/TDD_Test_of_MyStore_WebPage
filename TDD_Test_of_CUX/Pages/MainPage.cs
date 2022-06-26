@@ -7,7 +7,10 @@ namespace TDD_Test_of_MyStore.Pages
 {
     internal class MainPage : BaseClass
     {
-        //constructor with reference to BaseClass
+        /// <summary>
+        /// constructor with reference to BaseClass
+        /// </summary>
+        /// <param name="driver"></param>
         public MainPage(IWebDriver driver) : base(driver)
         {
         }

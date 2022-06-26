@@ -8,7 +8,12 @@ namespace TestResources
 {
     public class WebDriverFactory
     {
-        //in this method you can define type of the browser
+        /// <summary>
+        /// in this method you can define type of the browser
+        /// </summary>
+        /// <param name="browserType"></param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentOutOfRangeException"></exception>
         public IWebDriver Create(BrowserType browserType)
         {
             return browserType switch
@@ -18,7 +23,10 @@ namespace TestResources
             };
         }
 
-        //different types of drivers can be added in a similar way
+        /// <summary>
+        /// different types of drivers can be added in a similar way
+        /// </summary>
+        /// <returns></returns>
         private IWebDriver GetChromeDriver()
         {
             //return driver

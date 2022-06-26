@@ -8,7 +8,10 @@ namespace TDD_Test_of_MyStore.Pages
 {
     internal class TopMenu : BaseClass
     {
-        //constructor with reference to BaseClass
+        /// <summary>
+        /// constructor with reference to BaseClass
+        /// </summary>
+        /// <param name="driver"></param>
         public TopMenu(IWebDriver driver) : base(driver)
         {
         }
