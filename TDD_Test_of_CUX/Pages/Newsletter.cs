@@ -42,8 +42,7 @@ namespace TDD_Test_of_MyStore.Pages
         {
             try
             {
-                NewsletterSubmitButton.Click();
-                Reporter.LogTestStepForBugLogger(Status.Info, "Click: Newsletter submit button");
+                ClickElement(NewsletterSubmitButton, "NewsletterSubmitButton");
             }
             catch (Exception)
             {

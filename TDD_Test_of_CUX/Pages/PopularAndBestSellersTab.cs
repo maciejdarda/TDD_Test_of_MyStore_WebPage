@@ -19,16 +19,16 @@ namespace TDD_Test_of_MyStore.Pages
         public IWebElement PopularTab => _driver.FindElement(By.XPath(@"//a[@href='#homefeatured']"));
         public IWebElement BestSellersTab => _driver.FindElement(By.XPath(@"//a[@href='#blockbestsellers']"));
 
+        //TODO reduce to one method
         internal void SwitchToPopularTab()
         {
             try
             {
-                PopularTab.Click();
-                Reporter.LogTestStepForBugLogger(Status.Info, "Click: Popular tab");
+                ClickElement(PopularTab, "PopularTab");
             }
             catch (NoSuchElementException ex)
             {
-                //TODO zobaczyc co z tymi errorami w logach
+                //TODO check error in logs, how it look
                 LoggerObj.Error(ex.Message);
             }
         }
@@ -37,12 +37,11 @@ namespace TDD_Test_of_MyStore.Pages
         {
             try
             {
-                BestSellersTab.Click();
-                Reporter.LogTestStepForBugLogger(Status.Info, "Click: BestSeller tab");
+                ClickElement(BestSellersTab, "BestSellersTab");
             }
             catch (NoSuchElementException ex)
             {
-                //TODO zobaczyc co z tymi errorami w logach
+                //TODO check error in logs, how it look
                 LoggerObj.Error(ex.Message);
             }
         }

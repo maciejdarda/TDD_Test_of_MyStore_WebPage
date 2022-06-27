@@ -21,6 +21,7 @@ namespace TDD_Test_of_MyStore
         /// accessible in all derived classes
         /// </summary>
         /// <param name="elementToHL"></param>
+        /// <param name="reportMessage"></param>
         public void HighlightElement(IWebElement elementToHL, string reportMessage)
         {
             var jsDriver = (IJavaScriptExecutor)_driver;
@@ -33,6 +34,7 @@ namespace TDD_Test_of_MyStore
         /// accessible in all derived classes
         /// </summary>
         /// <param name="element"></param>
+        /// <param name="reportMessage"></param>
         public void MoveToElement(IWebElement element, string reportMessage)
         {
             Actions actions = new Actions(_driver);
@@ -46,6 +48,7 @@ namespace TDD_Test_of_MyStore
         /// </summary>
         /// <param name="element"></param>
         /// <param name="text"></param>
+        /// <param name="reportMessage"></param>
         public void SendKeysToElement(IWebElement element, string text, string reportMessage)
         {
             Actions actions = new Actions(_driver);
@@ -58,6 +61,7 @@ namespace TDD_Test_of_MyStore
         /// accessible in all derived classes
         /// </summary>
         /// <param name="element"></param>
+        /// <param name="reportMessage"></param>
         /// <returns></returns>
         public bool CheckIfElementIsDisplayed(IWebElement element, string reportMessage)
         {
@@ -82,11 +86,23 @@ namespace TDD_Test_of_MyStore
         /// accessible in all derived classes
         /// </summary>
         /// <param name="element"></param>
+        /// <param name="reportMessage"></param>
         public void MoveMouseOverElemnet(IWebElement element, string reportMessage)
         {
             Actions action = new Actions(_driver);
             action.MoveToElement(element).Perform();
             Reporter.LogTestStepForBugLogger(Status.Info, $"MoveMouseAbove: {reportMessage}");
+        }
+
+        /// <summary>
+        /// accessible in all derived classes
+        /// </summary>
+        /// <param name="element"></param>
+        /// <param name="reportMessage"></param>
+        public void ClickElement(IWebElement element, string reportMessage)
+        {
+            element.Click();
+            Reporter.LogTestStepForBugLogger(Status.Info, $"Click: {reportMessage}");
         }
     }
 }

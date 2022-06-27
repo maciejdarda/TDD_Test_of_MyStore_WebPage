@@ -23,8 +23,7 @@ namespace TDD_Test_of_MyStore.Pages
         {
             try
             {
-                NextButton.Click();
-                Reporter.LogTestStepForBugLogger(Status.Info, "Click: NextAdvers button");
+                ClickElement(NextButton, "NextButton");
 
                 //time to scroll the ad
                 Thread.Sleep(500);
@@ -37,11 +36,10 @@ namespace TDD_Test_of_MyStore.Pages
 
         internal void SwitchAdverToPrev()
         {
-            //TODO poprawic te catche
+            //TODO change catches
             try
             {
-                PrevButton.Click();
-                Reporter.LogTestStepForBugLogger(Status.Info, "Click: PrevAdvers button");
+                ClickElement(PrevButton, "PrevButton");
 
                 //time to scroll the ad
                 Thread.Sleep(500);

@@ -22,8 +22,7 @@ namespace TDD_Test_of_MyStore.Pages
 
         internal void OpenCartPage()
         {
-            CartOnMain.Click();
-            Reporter.LogTestStepForBugLogger(Status.Info, "Click: Cart button"); 
+            ClickElement(CartOnMain, "CartOnMain"); 
         }
 
         internal void AssertThatCartPageIsOpen()
@@ -39,8 +38,7 @@ namespace TDD_Test_of_MyStore.Pages
             Assert.IsTrue(AddToCartPanel.Displayed, "AddToCartPanel not displayed");
             Assert.IsTrue(OkIcon.Displayed, "OkIcon not displayed");
             Reporter.LogPassingTestStepToBugLogger("Assert: Cart panel is displayed");
-            CloseWindowButton.Click();
-            Reporter.LogTestStepForBugLogger(Status.Info, "Click: Close window button");
+            ClickElement(CloseWindowButton, "CloseWindowButton");
             MoveToElement(CartOnMain, "CartOnMain");
             Assert.IsTrue(CartCounter[0].Text == "1", "Cart counter displaying wrong number of items");
             Reporter.LogPassingTestStepToBugLogger("Assert: Cart counter displayed correct amount of items");

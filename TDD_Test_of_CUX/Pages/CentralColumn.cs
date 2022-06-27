@@ -24,8 +24,7 @@ namespace TDD_Test_of_MyStore.Pages
             MoveToElement(FirstItemInCentralColumn[0], "FirstItemInCentralColumn");
             MoveMouseOverElemnet(ImgForFirstItemInCentralColumn[0], "ImgForFirstItemInCentralColumn");
             Thread.Sleep(500);
-            FadedShortsAddToCartButton[0].Click();
-            Reporter.LogTestStepForBugLogger(Status.Info, "Click: FadedShortsAddToCartButton");
+            ClickElement(FadedShortsAddToCartButton[0], "FadedShortsAddToCartButton");
         }
     }
 }
