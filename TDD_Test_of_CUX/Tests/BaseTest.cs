@@ -2,7 +2,6 @@
 using NUnit.Framework;
 using OpenQA.Selenium;
 using System;
-using TDD_Test_of_MyStore.Pages;
 using TestResources;
 
 namespace TDD_Test_of_MyStore.Tests

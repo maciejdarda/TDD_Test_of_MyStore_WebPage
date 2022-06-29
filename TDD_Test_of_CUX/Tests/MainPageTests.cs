@@ -1,5 +1,4 @@
 ﻿using AventStack.ExtentReports;
-using NLog;
 using NUnit.Framework;
 using OpenQA.Selenium;
 
@@ -9,8 +8,6 @@ namespace TDD_Test_of_MyStore.Tests
     [Category("Main Page funcionality and navigation")]
     internal class MainPageTests : BaseTest
     {
-        private static Logger LoggerObj = LogManager.GetCurrentClassLogger();
-
         IWebElement Logo => Driver.FindElement(By.XPath(@"//img[@class='logo img-responsive']"));
         IWebElement PopularTab => Driver.FindElement(By.XPath(@"//a[@href='#homefeatured']"));
         IWebElement BestSellersTab => Driver.FindElement(By.XPath(@"//a[@href='#blockbestsellers']"));
@@ -24,38 +21,30 @@ namespace TDD_Test_of_MyStore.Tests
         [Description("MainPage - test opening of the web page")]
         [Property("Author", "Maciej Darda")]
         [Test]
-        public void TCID1()
+        public void TestCase_1_MainPageShouldOpen()
         {
-            LoggerObj.Debug("TCID1 - started");
-
             //page opening evoked in the [SetUp] from the BaseTest class
             //PageObejcts intialized in the BaseTest
             PageObejcts.MainPage.AssertThatPageIsOpen(Driver, Logo);
-            LoggerObj.Debug("TCID1 - stopped");
         }
 
         [Description("POPULAR and BESTSELLERS - test switching between tabs")]
         [Property("Author", "Maciej Darda")]
         [Test]
-        public void TCID2()
+        public void TestCase_2_SwitchBetweenPopularAndBestsellersTabShouldBePosible()
         {
-            LoggerObj.Debug("TCID2 - started");
-
             //PageObejcts intialized in the BaseTest
             PageObejcts.PopularAndBestSellersTab.SwitchToBestSellersTab();
             PageObejcts.PopularAndBestSellersTab.AssertThatElementIsActive(BestSellersTabParent);
             PageObejcts.PopularAndBestSellersTab.SwitchToPopularTab();
             PageObejcts.PopularAndBestSellersTab.AssertThatElementIsActive(PopularTabParent);
-            LoggerObj.Debug("TCID2 - stopped");
         }
 
         [Description("HomepageSlaider - test switching ads")]
         [Property("Author", "Maciej Darda")]
         [Test]
-        public void TCID3()
+        public void TestCase_3_SwitchBetweenAdsInHomesliderShouldBePosible()
         {
-            LoggerObj.Debug("TCID3 - started");
-
             //NextButton functionality test #1
             var currentHomeslider = Homeslider.GetAttribute("style");
 
@@ -81,17 +70,13 @@ namespace TDD_Test_of_MyStore.Tests
             PageObejcts.HomepageSlider.SwitchAdverToPrev();
             nextHomeslider = Homeslider.GetAttribute("style");
             PageObejcts.HomepageSlider.AssertThatAdHasChange(currentHomeslider, nextHomeslider);
-
-            LoggerObj.Debug("TCID3 - stopped");
         }
 
         [Description("Newsletter - test the behavior when providing incorrect data or the lack")]
         [Property("Author", "Maciej Darda")]
         [Test]
-        public void TCID4()
+        public void TestCase_4_ProvidingIncorrectDataShouldNotPassInNewletter()
         {
-            LoggerObj.Debug("TCID4 - started");
-
             //PageObejcts intialized in the BaseTest
             //case 1 - submit incorrect email
             PageObejcts.Newsletter.SendKeysToNewsLetter("bad_mail");
@@ -105,37 +90,27 @@ namespace TDD_Test_of_MyStore.Tests
             //Newsletter input should be empty after first invalid submit
             PageObejcts.Newsletter.SubmitNewsletter();
             PageObejcts.Newsletter.AssertIncorrectNewsletterSubmission();
-
-            LoggerObj.Debug("TCID4 - stopped");
         }
 
         [Description("Newsletter - test the behavior when providing valid email")]
         [Property("Author", "Maciej Darda")]
         [Test]
-        public void TCID5()
+        public void TestCase_5_ProvidingValidEmailInNewsletterShouldPass()
         {
-            LoggerObj.Debug("TCID5 - started");
-
             //PageObejcts intialized in the BaseTest
             PageObejcts.Newsletter.SendKeysToNewsLetter("goodmail@gmail.com");
             PageObejcts.Newsletter.SubmitNewsletter();
             PageObejcts.Newsletter.AssertProvidingValidEmail();
-
-            LoggerObj.Debug("TCID5 - stopped");
         }
 
         [Description("TopMemu - test unfold context panel after hover over WOMEN item")]
         [Property("Author", "Maciej Darda")]
         [Test]
-        public void TCID6()
+        public void TestCase_6_TopMemuShouldUnfoldItContextAfterHoverAtWomenItem()
         {
-            LoggerObj.Debug("TCID6 - started");
-
             //PageObejcts intialized in the BaseTest
             PageObejcts.TopMenu.MoveMouseOverWomenItem();
             PageObejcts.TopMenu.AssertWomenItemDisplayed();
-
-            LoggerObj.Debug("TCID6 - stopped");
         }
     }
 }
